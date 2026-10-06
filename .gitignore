@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcuserdatad
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Secrets
+*.p12
+*.cer
+*.mobileprovision
+*.pem
+.env
+Secrets.plist
+GoogleService-Info.plist
