@@ -20,7 +20,8 @@ struct DesignGalleryView: View {
         ("error", AppColor.error),
         ("protein", AppColor.protein),
         ("carbs", AppColor.carbs),
-        ("fat", AppColor.fat)
+        ("fat", AppColor.fat),
+        ("fiber", AppColor.fiber)
     ]
 
     var body: some View {

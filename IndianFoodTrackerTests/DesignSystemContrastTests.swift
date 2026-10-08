@@ -176,4 +176,35 @@ final class DesignSystemContrastTests: XCTestCase {
             minimum: 3.0
         )
     }
+
+    func testFiberColorContrast() {
+        // Fiber is a large, bold number with a text label, like the other nutrient colors (3:1).
+        checkContrast(
+            "Fiber on surface",
+            foreground: AppPalette.fiber,
+            background: AppPalette.surface,
+            minimum: 3.0
+        )
+        checkContrast(
+            "Fiber on background",
+            foreground: AppPalette.fiber,
+            background: AppPalette.background,
+            minimum: 3.0
+        )
+    }
+
+    func testNutrientColorsAreDistinct() {
+        let colors: [(String, AppColorPair)] = [
+            ("protein", AppPalette.protein), ("carbs", AppPalette.carbs),
+            ("fat", AppPalette.fat), ("fiber", AppPalette.fiber)
+        ]
+        for i in 0..<colors.count {
+            for j in (i + 1)..<colors.count {
+                XCTAssertNotEqual(colors[i].1.light, colors[j].1.light,
+                                  "\(colors[i].0) and \(colors[j].0) share a LIGHT color")
+                XCTAssertNotEqual(colors[i].1.dark, colors[j].1.dark,
+                                  "\(colors[i].0) and \(colors[j].0) share a DARK color")
+            }
+        }
+    }
 }

@@ -27,34 +27,36 @@ nonisolated private func uiColor(hex: UInt32) -> UIColor {
 
 /// The raw light/dark values. Kept separate so tests can check contrast with math.
 enum AppPalette {
-    // Backgrounds and surfaces: warm off-white / warm near-black
-    static let background          = AppColorPair(light: 0xFAF6F0, dark: 0x1A1614)
-    static let backgroundSecondary = AppColorPair(light: 0xF2EBE2, dark: 0x221D1A)
-    static let surface             = AppColorPair(light: 0xFFFFFF, dark: 0x2A2420)
-    static let surfaceElevated     = AppColorPair(light: 0xFFFFFF, dark: 0x352E29)
+    // Indigo Dusk. Dark: deep ink with a faint indigo cast, ivory text, copper accent. Light: warm ivory with ink-indigo text.
+    // Backgrounds and surfaces
+    static let background          = AppColorPair(light: 0xF8F4EC, dark: 0x0F0F15)
+    static let backgroundSecondary = AppColorPair(light: 0xEFE9DE, dark: 0x14141B)
+    static let surface             = AppColorPair(light: 0xFFFFFF, dark: 0x1B1B24)
+    static let surfaceElevated     = AppColorPair(light: 0xFFFFFF, dark: 0x252530)
 
-    // Brand: muted paprika / terracotta
-    static let primary             = AppColorPair(light: 0xB5472A, dark: 0xE58A6B)
-    static let primaryForeground   = AppColorPair(light: 0xFFFFFF, dark: 0x1A1614)
-    static let accent              = AppColorPair(light: 0xA23E22, dark: 0xEE9B7E)
+    // Brand: restrained ember (terracotta). Use sparingly.
+    static let primary             = AppColorPair(light: 0xB04A2E, dark: 0xCC9166)
+    static let primaryForeground   = AppColorPair(light: 0xFFFFFF, dark: 0x0F0F15)
+    static let accent              = AppColorPair(light: 0x9E4228, dark: 0xDDA77E)
 
-    // Text: warm charcoal
-    static let textPrimary         = AppColorPair(light: 0x2B2420, dark: 0xF5EFE8)
-    static let textSecondary       = AppColorPair(light: 0x6B5F57, dark: 0xBDB1A7)
-    static let textTertiary        = AppColorPair(light: 0x7A6E65, dark: 0x9A8E85)
+    // Text
+    static let textPrimary         = AppColorPair(light: 0x151A33, dark: 0xF4EFE6)
+    static let textSecondary       = AppColorPair(light: 0x555B78, dark: 0xB9B5BF)
+    static let textTertiary        = AppColorPair(light: 0x62677F, dark: 0x8F8C9A)
 
     // Structure
-    static let divider             = AppColorPair(light: 0xE4DACD, dark: 0x3D3530)
+    static let divider             = AppColorPair(light: 0xE2DACB, dark: 0x2F2F3D)
 
-    // Status
+    // Status (unchanged)
     static let success             = AppColorPair(light: 0x2E7D4F, dark: 0x5DBB82)
     static let warning             = AppColorPair(light: 0x9A5B00, dark: 0xE5A33A)
     static let error               = AppColorPair(light: 0xB3261E, dark: 0xF2877F)
 
-    // Macronutrients (always shown with a text label too, never color alone)
+    // Nutrients (always shown with a text label too, never color alone)
     static let protein             = AppColorPair(light: 0x2F6B8A, dark: 0x6FB3D2)
     static let carbs               = AppColorPair(light: 0xA86F0E, dark: 0xE3B04B)
     static let fat                 = AppColorPair(light: 0x8A5A8F, dark: 0xC79BCB)
+    static let fiber               = AppColorPair(light: 0x5C7A29, dark: 0xA8C672)
 }
 
 /// The colors the app uses. Always use these instead of raw colors in views.
@@ -81,4 +83,5 @@ enum AppColor {
     static let protein             = AppPalette.protein.color
     static let carbs               = AppPalette.carbs.color
     static let fat                 = AppPalette.fat.color
+    static let fiber               = AppPalette.fiber.color
 }

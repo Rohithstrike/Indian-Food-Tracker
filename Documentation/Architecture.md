@@ -44,3 +44,25 @@ Tests stay in the folders Xcode created.
 ## Status
 
 Milestone 3: folder structure created. Folders without files are not yet tracked by Git.
+
+## Milestone 5: app shell and Today screen
+
+- `ContentView` is the root `TabView` (Today, Foods, Settings) and presents the Add Food sheet.
+- `Features/Today`: `TodayView`, `TodayViewModel`, `CalorieHeroCard`, `MealSectionCard`.
+- `Features/AddFood`: placeholder sheet for choosing a meal (real search arrives in Milestone 10).
+- `Features/Foods` and `Features/Settings`: placeholder tabs.
+- `Domain/Meals/MealType.swift`: the seven meals.
+- `TodayItem` is a TEMPORARY display shape, replaced by the real `MealEntry` (with a nutrition snapshot) in Milestone 12.
+- The 2,000 kcal target is a PLACEHOLDER, replaced by a user-set target in Milestone 17.
+- Debug-only: the "Load demo data" menu on Today and the Design Gallery row in Settings are wrapped in `#if DEBUG` and never ship. Demo data is clearly labeled and is never real nutrition data.
+
+## Milestone 5: app shell and Today screen
+
+- `ContentView` is the root `TabView` (Today, Foods, Settings) and presents the Add Food sheet.
+- `Features/Today`: `TodayView`, `TodayViewModel`, `CalorieHeroCard`, `MealSectionCard`.
+- `Features/AddFood`: placeholder sheet for choosing a meal (real search arrives in Milestone 10).
+- `Features/Foods` and `Features/Settings`: placeholder tabs.
+- `Domain/Meals/MealType.swift`: the seven meals.
+- `TodayItem` is a TEMPORARY display shape, replaced by the real `MealEntry` (with a nutrition snapshot) in Milestone 12.
+- The 2,000 kcal target is a PLACEHOLDER, replaced by a user-set target in Milestone 17.
+- Debug-only: the "Load demo data" menu on Today and the Design Gallery row in Settings are wrapped in `#if DEBUG` and never ship. Demo data is clearly labeled and is never real nutrition data.
