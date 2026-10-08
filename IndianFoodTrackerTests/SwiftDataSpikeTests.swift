@@ -122,15 +122,27 @@ final class SwiftDataSpikeTests: XCTestCase {
         let values = Self.trickyDecimalStrings.map { Fixtures.dec($0) }
         let probes = try probesAfterReopen(values)
         XCTAssertEqual(probes.count, values.count)   // the only hard assertion: rows came back
+        var lines: [String] = []
         var exact = 0
-        for probe in probes {
+        for probe in probes.sorted(by: { (Int($0.label) ?? 0) < (Int($1.label) ?? 0) }) {
             guard let index = Int(probe.label), values.indices.contains(index) else { continue }
             let original = values[index]
             let isExact = probe.native == original
             if isExact { exact += 1 }
-            print("SPIKE-DECIMAL-A original=\(original) stored=\(probe.native) exact=\(isExact)")
+            lines.append("SPIKE-DECIMAL-A original=\(original) stored=\(probe.native) exact=\(isExact)")
         }
-        print("SPIKE-DECIMAL-A summary: \(exact) of \(values.count) exact")
+        lines.append("SPIKE-DECIMAL-A summary: \(exact) of \(values.count) exact")
+        let report = lines.joined(separator: "\n")
+
+        // Three channels, because it is not known which one survives on this toolchain.
+        print(report)
+        try? report.write(toFile: "/tmp/ift-decimal-a.txt", atomically: true, encoding: .utf8)
+        XCTContext.runActivity(named: "SPIKE-DECIMAL-A summary: \(exact) of \(values.count) exact") { activity in
+            let attachment = XCTAttachment(string: report)
+            attachment.name = "SPIKE-DECIMAL-A"
+            attachment.lifetime = .keepAlways
+            activity.add(attachment)
+        }
     }
 
     // MARK: Criterion 4: snapshot independence
